@@ -10,6 +10,7 @@ module PayplugRails
   mattr_accessor :url
   mattr_accessor :private_key
   mattr_accessor :payplug_public_key
+  mattr_accessor :ipn_callback
 
   class Payplug
 
@@ -28,5 +29,13 @@ module PayplugRails
       return PayplugRails.url+"?data="+http_data+"&sign="+http_sign
     end
 
+    def self.verify(request)
+      # Verify the IPN contained in the http request
+      signature = Base64.decode64(request.headers['HTTP_PAYPLUG_SIGNATURE'])
+      body = request.raw_post
+      key = OpenSSL::PKey::RSA.new PayplugRails.payplug_public_key
+      status = key.verify(OpenSSL::Digest::SHA1.new, signature, body)
+      return status
+    end
   end
 end

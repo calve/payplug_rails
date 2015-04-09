@@ -1,9 +1,15 @@
+require 'payplug_rails'
+
 class PayplugIpnsController < ApplicationController
   protect_from_forgery :except => :ipn
 
   def ipn
     puts "IPN : "  + request.raw_post
-    render :text => request.method + " : "  + request.raw_post + "///" + payplug_ipn_params.to_s
+    valid = PayplugRails::Payplug.verify(request)
+    render :text => request.method+ " : "  + request.raw_post + "///" + payplug_ipn_params.to_s
+    if valid
+      send(PayplugRails.ipn_callback, JSON.parse(request.raw_post))
+    end
   end
 
   private
