@@ -28,7 +28,7 @@ Get your [Payplug autoconfig](https://www.payplug.fr/portal/ecommerce/autoconfig
 
 Add the following to ``config/routes.rb``
 
-    post '/ipn' => 'payplug_ipns#ipn'
+    mount PayplugRails::Engine, at: "/ipn"
 
 To get a payment url, do
 

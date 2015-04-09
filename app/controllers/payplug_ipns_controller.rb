@@ -3,7 +3,7 @@ class PayplugIpnsController < ApplicationController
 
   def ipn
     puts "IPN : "  + request.raw_post
-    render :text => request.method + " : "  + request.raw_post + "///" + payplug_ipn_parmas
+    render :text => request.method + " : "  + request.raw_post + "///" + payplug_ipn_params.to_s
   end
 
   private
