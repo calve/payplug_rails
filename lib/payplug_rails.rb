@@ -19,6 +19,7 @@ module PayplugRails
         currency: 'EUR',
         amount: amount,
         ipn_url: ipn_url,
+        origin: "PayplugRails-"+PayplugRails::VERSION,
       }.merge(customer_hash).to_query
 
       key = OpenSSL::PKey::RSA.new PayplugRails.private_key
