@@ -6,9 +6,7 @@ A Rails plugin to create payment using Payplug's solution
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'payplug_rails'
-```
+    gem 'payplug_rails'
 
 And then execute:
 
@@ -31,6 +29,7 @@ Get your [Payplug autoconfig](https://www.payplug.fr/portal/ecommerce/autoconfig
       Order.save
     end
 
+    # Mind the colomn to pass a function pointer
     PayplugRails.ipn_callback = :ipn_callback
 
     # The following parameters comes from your autoconfig
@@ -42,18 +41,28 @@ Add the following to ``config/routes.rb``
 
     mount PayplugRails::Engine, at: "/ipn"
 
-Then, in a controller, to get a payment url, do
+Then, in a controller, to get a payment url and redirect your user, require the module with
 
-    redirect_to PayplugRails::Payplug.create_payment(1200, ipn_url)
+    require 'payplug_rails'
+
+Then
+
+    ipn_url = request.base_url + payplug_rails_engine_path # Create an ipn url relatives to the url used
+    redirect_to PayplugRails::Payplug.create_payment(1200, ipn_url) # Create a payment for 12€00
 
 You can also pass extra parameters :
 
     redirect_to PayplugRails::Payplug.create_payment(1200, ipn_url, {first_name: customer.first_name, last_name: customer.last_name, email: customer.email, order: order.id})
 
 
+## Get IPN in development
+
+Payplug expect your ipn_url to be reachable from the internet, which is typically not the case in a developement setup. However, you can set a [localtunnel](https://www.localtunnel.me) and access your application with the url provided.
+
+
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/payplug_rails/fork )
+1. Fork it ( https://github.com/calve/payplug_rails/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
