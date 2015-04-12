@@ -60,6 +60,10 @@ You can also pass extra parameters :
 Payplug expect your ipn_url to be reachable from the internet, which is typically not the case in a developement setup. However, you can set a [localtunnel](https://www.localtunnel.me) and access your application with the url provided.
 
 
+## Disclosure
+
+Despite the fact I'm currently working for Payplug SAS, this plugin is not supported nor maintened by Payplug.
+
 ## Contributing
 
 1. Fork it ( https://github.com/calve/payplug_rails/fork )
