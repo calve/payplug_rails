@@ -1,6 +1,6 @@
 # PayplugRails
 
-A Rails plugin to create payment using Payplug's solution
+A Rails plugin to create payments using Payplug's solution
 
 ## Installation
 
@@ -62,7 +62,8 @@ Payplug expect your ipn_url to be reachable from the internet, which is typicall
 
 ## Disclosure
 
-Despite the fact I'm currently working for Payplug SAS, this plugin is not supported nor maintened by Payplug.
+This plugin is not supported nor maintened by Payplug SAS.
+
 
 ## Contributing
 
