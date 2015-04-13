@@ -32,6 +32,9 @@ module PayplugRails
 
     def self.verify(request)
       # Verify the IPN contained in the http request
+      if request.raw_post.blank?
+        return false
+      end
       signature = Base64.decode64(request.headers['HTTP_PAYPLUG_SIGNATURE'])
       body = request.raw_post
       key = OpenSSL::PKey::RSA.new PayplugRails.payplug_public_key
