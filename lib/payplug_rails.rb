@@ -24,8 +24,8 @@ module PayplugRails
 
       key = OpenSSL::PKey::RSA.new PayplugRails.private_key
       raw_sign = key.sign(OpenSSL::Digest::SHA1.new, data)
-      http_sign = CGI.escape(Base64.encode64(raw_sign))
-      http_data = CGI.escape(Base64.encode64(data))
+      http_sign = CGI.escape(Base64.strict_encode64(raw_sign))
+      http_data = CGI.escape(Base64.strict_encode64(data))
 
       return PayplugRails.url+"?data="+http_data+"&sign="+http_sign
     end
