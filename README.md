@@ -33,7 +33,7 @@ Get your [Payplug autoconfig](https://www.payplug.fr/portal/ecommerce/autoconfig
     PayplugRails.ipn_callback = :ipn_callback
 
     # The following parameters comes from your autoconfig
-    PayplugRails.url = "https://www.payplug.fr/p/<you-url>"
+    PayplugRails.url = "https://www.payplug.fr/p/<your-url>"  # This is your url taken from autoconfig
     PayplugRails.payplug_public_key = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtN4dpK368PEEYKeee7S5\n1m2a8GUFLDAZ/HgRI1H6diYt87gzDPftn1UyW96YuIBed0T0dtl0tuABaIgGeddR\nuo3zfMpkyYWM2D5UHUEMKzEY5WIyaaWoVYJaZU5DWzCiroKcnUJgKm41RL32/CHU\nSFoymxjOOzpvkazbaY+Ql2GYev2QwKAf7lkH91Wp3frjQYXEFIwYnt6ZET8wPUwX\nMdF0hRaZYlaDQrCB2S/+k4Djb8mXqVkJ0qqgItycL05zyysJw/IGMr2zZ5hQSnfN\nCJ+i33ywnoT/qctGgLW4bGuGdTdcbA7VzdxhXtHaAQjuJvrf+twNCQSLCMbZ6pnK\nzQIDAQAB\n-----END PUBLIC KEY-----\n"
     PayplugRails.private_key = "-----BEGIN RSA PRIVATE KEY-----\nrawprivatekey\n-----END RSA PRIVATE KEY-----""
 
